@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Why You're Special ❤️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: linear-gradient(135deg, #440813 0%, #a4133c 30%, #2D006B 60%, #9C7E46 100%);
+      color: #2d1b3d;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 40px; /* Space for the bottom button */
+    }
+
+    /* Floating Background Particles */
+    .bg-heart {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .bg-heart span {
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.4);
+      animation: move 25s infinite linear;
+      bottom: -150px;
+      clip-path: path("M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
+    }
+
+    @keyframes move {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* Container */
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      background: linear-gradient(to right, #fa8a8a, #d21919);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #6b428d;
+    }
+
+    /* The "Reason" Cards */
+    .reason-card {
+      background: rgba(200, 202, 201, 0.235);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 2px solid rgba(244, 180, 180, 0.637);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 25px;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 10px 30px rgba(205, 180, 219, 0.3);
+    }
+
+    .reason-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .reason-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .reason-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #fc0f66;
+    }
+
+    .reason-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #3d2f4d;
+    }
+
+    /* Final Button Section */
+    .final-section {
+      text-align: center;
+      margin-top: 60px;
+      opacity: 0; 
+      /* Will be revealed by JS */
+      transition: opacity 0.5s ease 0.5s;
+    }
+    
+    .final-section.visible {
+      opacity: 1;
+    }
+
+    .final-message {
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      opacity: 0.8;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      color: #4d3a5d;
+    }
+
+    .letter-btn {
+      position: relative;
+      background: linear-gradient(135deg, #f75691 0%, #b0285c 50%, #c61346 100%);
+      color: #2d1b3d;
+      border: none;
+      padding: 18px 50px;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 8px 30px rgba(255, 175, 204, 0.5);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      letter-spacing: 1px;
+    }
+
+    .letter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .letter-btn:hover::before {
+      left: 100%;
+    }
+
+    .letter-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(255, 175, 204, 0.7);
+    }
+
+    .letter-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 20px rgba(255, 175, 204, 0.5);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 175, 204, 0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(255, 175, 204, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 175, 204, 0); }
+    }
+
+    .letter-btn {
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Decorative hearts around button */
+    .hearts-decoration {
+      position: relative;
+      display: inline-block;
+    }
+
+    .heart-float {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: floatHeart 3s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .heart-float:nth-child(1) {
+      top: -20px;
+      left: -30px;
+      animation-delay: 0s;
+    }
+
+    .heart-float:nth-child(2) {
+      top: -20px;
+      right: -30px;
+      animation-delay: 0.5s;
+    }
+
+    .heart-float:nth-child(3) {
+      bottom: -20px;
+      left: -30px;
+      animation-delay: 1s;
+    }
+
+    .heart-float:nth-child(4) {
+      bottom: -20px;
+      right: -30px;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes floatHeart {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-10px) scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-heart">
+    <span style="left: 10%; width: 30px; height: 30px; animation-duration: 12s; animation-delay: 0s;"></span>
+    <span style="left: 30%; width: 20px; height: 20px; animation-duration: 18s; animation-delay: 2s;"></span>
+    <span style="left: 70%; width: 40px; height: 40px; animation-duration: 15s; animation-delay: 4s;"></span>
+    <span style="left: 90%; width: 25px; height: 25px; animation-duration: 20s; animation-delay: 1s;"></span>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>Why You?</h1>
+      <p class="subtitle">There are a million reasons, but here are a few...</p>
+    </header>
+
+    <div class="reason-card">
+      <span class="reason-icon">☀️</span>
+      <h3 class="reason-title">Your Radiant Smile</h3>
+      <p class="reason-text">
+        Every time you smile, it's like the sun breaking through clouds. Your happiness is contagious, and I find myself smiling just thinking about you.
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <span class="reason-icon">💛</span>
+      <h3 class="reason-title">Your Heart of Gold</h3>
+      <p class="reason-text">
+        The way you care for others and show compassion amazes me every single day. Your heart is pure gold, and the world is brighter because of you. You're caring, kind, and respectful — and that's something really beautiful.
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <span class="reason-icon">🌱</span>
+      <h3 class="reason-title">You Inspire Me</h3>
+      <p class="reason-text">
+        With you, I want to be the best version of myself. You inspire me to grow, to dream bigger, and to see the beauty in everyday moments.
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <span class="reason-icon">😄</span>
+      <h3 class="reason-title">Your Beautiful Laugh</h3>
+      <p class="reason-text">
+        I could listen to you laugh all day. It's genuine, beautiful, and fills my heart with joy. You have a way of finding happiness in the smallest things.
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <span class="reason-icon">💕</span>
+      <h3 class="reason-title">Your Happiness Matters</h3>
+      <p class="reason-text">
+        I always want to see you happy. Your happiness means a lot to me, more than I can explain.
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <span class="reason-icon">🌺</span>
+      <h3 class="reason-title">You're One of a Kind</h3>
+      <p class="reason-text">
+        This list could go on forever because every little thing about you makes you special. You're one of a kind, Anju, and I'm so grateful to know you.
+      </p>
+    </div>
+
+    <div class="final-section">
+      <p class="final-message">I have one more thing to say...</p>
+      <div class="hearts-decoration">
+        <span class="heart-float">💖</span>
+        <span class="heart-float">💗</span>
+        <span class="heart-float">❣️</span>
+        <span class="heart-float">💓</span>
+        <a href="letter.html" class="letter-btn">Read My Letter 💌</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Simple Intersection Observer to animate elements as you scroll
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.reason-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Observe the button section
+    const finalSection = document.querySelector('.final-section');
+    if (finalSection) {
+      observer.observe(finalSection);
+    }
+  </script>
+
+</body>
+</html>

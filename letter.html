@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Anju 💌</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Georgia', serif;
+            /* background: linear-gradient(180deg, #fff0f3 0%, #ffe4e9 50%, #ffd6df 100%); */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            min-height: 100vh;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        /* Simple floating hearts */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: rise 12s infinite ease-in-out;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-20vh) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 100%;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .envelope {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 50px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .letter {
+            background: #a796ba96;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            box-shadow: 
+                0 10px 40px rgba(255, 75, 100, 0.15),
+                0 2px 10px rgba(0, 0, 0, 0.08);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #ffe4e9;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: #dda15e;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .date {
+            color: #f55673;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .greeting {
+            font-size: 1.3rem;
+            color: #fefae0;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .content {
+            color: #2c2c2c;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .content p {
+            margin-bottom: 1.3rem;
+            animation: fadeIn 0.6s ease-out backwards;
+        }
+
+        .content p:nth-child(1) { animation-delay: 0.2s; }
+        .content p:nth-child(2) { animation-delay: 0.4s; }
+        .content p:nth-child(3) { animation-delay: 0.6s; }
+        .content p:nth-child(4) { animation-delay: 0.8s; }
+        .content p:nth-child(5) { animation-delay: 1s; }
+        .content p:nth-child(6) { animation-delay: 1.2s; }
+        .content p:nth-child(7) { animation-delay: 1.4s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart-divider {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 1.5rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .thanks {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe9ee 100%);
+            padding: 1.2rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #ff4d6d;
+        }
+
+        .thanks p {
+            color: #b9b90d;
+            font-style: italic;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .thanks p:last-child {
+            margin-bottom: 0;
+        }
+
+        .closing {
+            text-align: center;
+            font-weight: 600;
+            color: #780000;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+        }
+
+        .signature {
+            margin-top: 2rem;
+            text-align: right;
+        }
+
+        .with-love {
+            color: #f6728a;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .name {
+            color: #940909;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Brush Script MT', cursive;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #98083830 0%, #e81c3b64 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.6s ease-out 1.6s backwards;
+        }
+
+        .button:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.5);
+        }
+
+        /* Tablet and larger */
+        @media (min-width: 768px) {
+            body {
+                padding: 2rem;
+            }
+
+            .container {
+                max-width: 500px;
+            }
+
+            .letter {
+                padding: 3rem 2.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .greeting {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="media/Stars.mp4" type="video/mp4">
+    </video>
+    <div class="hearts-bg" id="hearts"></div>
+
+    <div class="container">
+        <div class="envelope">💌</div>
+
+        <div class="letter">
+            <div class="header">
+                <h1>A Letter From My Heart</h1>
+                <div class="date">February 14th, 2026</div>
+            </div>
+
+            <div class="greeting">My Dearest Anju 🎀,</div>
+
+            <div class="content">
+                <p>Happy Valentine’s Day ❤️</p>
+
+                <p>Anju, you are truly special to me.</p>
+
+                <p>Your smile makes me smile every single time, and your soft voice has this beautiful way of calming my heart.</p>
+
+                <p>I love you soo, soo, soo, soo..... much. More than words can explain.</p>
+
+                <div class="heart-divider">💕 💖 💕</div>
+
+                <p>I don't want anything complicated. I just want to see you happy. I want to support you, respect you, and grow with you. I want to become someone who makes you feel safe, valued, and proud.</p>
+
+                <div class="thanks">
+                    <p>Thank you for being you.</p>
+                    <p>Thank you for your kindness.</p>
+                    <p>Thank you for your presence in my life.</p>
+                </div>
+
+                <p>No matter where life takes us, I will always cherish the way you make my world a little brighter.</p>
+
+                <div class="closing">Happy Valentine's Day, Anju. ❤️</div>
+            </div>
+
+            <div class="signature">
+                <div class="with-love">With all my heart,</div>
+                <div class="name">Aditya 💖</div>
+            </div>
+        </div>
+
+        <a href="willyou.html" class="button">Continue...💕</a>
+    </div>
+
+    <script>
+        // Create simple floating hearts
+        const heartsContainer = document.getElementById('hearts');
+        const heartSymbols = ['❤️', '💕', '💖', '💗', '💝'];
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.animationDuration = (10 + Math.random() * 5) + 's';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 15000);
+        }
+
+        // Create initial hearts
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 300);
+        }
+
+        // Keep creating hearts
+        setInterval(createHeart, 800);
+    </script>
+</body>
+</html>

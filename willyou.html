@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💝</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9ec4 0%, #ffb3d9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            animation: zoomIn 0.6s ease-out;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 30px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.3);
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* GIF Container */
+        .gif-container {
+            margin-bottom: 20px;
+            margin-top: 20px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffeef5, #ffe5f0);
+        }
+        
+        .gif-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+        
+        .gif-placeholder {
+            color: #ff6b9d;
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        .big-heart {
+            font-size: 60px;
+            animation: heartbeat 1.6s ease-in-out infinite;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 56px;
+            background: linear-gradient(135deg, #ff6b9d, #ff4757);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+        
+        .question {
+            font-size: 26px;
+            color: #2d132c;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            min-height: 90px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 22px 55px;
+            font-size: 24px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        #yesBtn {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        #noBtn {
+            background: linear-gradient(135deg, #f87171, #ef4444);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .message {
+            font-size: 20px;
+            color: #ff4757;
+            min-height: 30px;
+            margin-top: 20px;
+            font-weight: 500;
+            font-style: italic;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #ff6b9d;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 107, 157, 0.1);
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 42px;
+            }
+            
+            .question {
+                font-size: 22px;
+            }
+            
+            .btn {
+                padding: 18px 40px;
+                font-size: 20px;
+            }
+            
+            .gif-container {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- GIF SECTION - ADD YOUR GIF HERE -->
+        <!-- 
+            Uncomment below and add your GIF URL:
+            <div class="gif-container">
+                <img src="YOUR_GIF_URL_HERE" alt="Valentine GIF">
+            </div>
+            
+            Suggested: cute couple, romantic animation, valentine hearts
+        -->
+        <div class="gif-container">
+            <div class="gif-placeholder">
+                <div class="gif-container">
+                    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3g2ODJncXV2Y2lndHlrYXAxN2JieDV4ZDZmaWtpNGV4Nzk3Y3RzMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/t8xgPfC5oNIRMrNooe/giphy.gif" alt="Valentine GIF">
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div class="big-heart">💝</div> -->
+        
+        <h1>Anju...🎀</h1>
+        
+        <div class="question">
+            Will you be my Valentine? 🌹
+        </div>
+        
+        <div class="button-container">
+            <button id="yesBtn" class="btn" onclick="handleYes()">Yes! 💕</button>
+            <button id="noBtn" class="btn" onclick="handleNo()">No 😢</button>
+        </div>
+        
+        <div class="message" id="message"></div>
+        
+        <a href="letter.html" class="back-link">← Go back to letter</a>
+    </div>
+    
+    <script>
+        let noClickCount = 0;
+        
+        const noMessages = [
+            "Are you sure? 🥺",
+            "Think about it... 💭",
+            "The Yes button is right there! 👉",
+            "Come on, you know you want to! 😊",
+            "Just click Yes already! 💕",
+            "Please reconsider? 😭",
+            "Pretty please? 🙏",
+            "One more chance! ✨",
+            "I believe in us! 💖",
+            "Don't break my heart! 💔"
+        ];
+        
+        function handleNo() {
+            noClickCount++;
+            
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            const container = document.querySelector('.button-container');
+            const messageEl = document.getElementById('message');
+            
+            // Show message
+            const messageIndex = Math.min(noClickCount - 1, noMessages.length - 1);
+            messageEl.textContent = noMessages[messageIndex];
+            
+            // Swap button positions
+            if (container.children[0] === yesBtn) {
+                container.insertBefore(noBtn, yesBtn);
+            } else {
+                container.insertBefore(yesBtn, noBtn);
+            }
+            
+            // Shake animation
+            noBtn.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                noBtn.style.animation = '';
+            }, 500);
+            
+            // Grow Yes button
+            const currentSize = Math.min(1 + (noClickCount * 0.15), 2);
+            yesBtn.style.transform = `scale(${currentSize})`;
+        }
+        
+        function handleYes() {
+            window.location.href = 'yes.html';
+        }
+    </script>
+</body>
+</html>

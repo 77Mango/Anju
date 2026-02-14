@@ -1,28 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Tiny Site</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Valentine's Day, Anju ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 23, 68, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 105, 180, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Floating hearts container */
+    .hearts-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0;
+      animation: floatUp 8s infinite ease-in;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Different heart types and delays */
+    .floating-heart:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 24px; }
+    .floating-heart:nth-child(2) { left: 15%; animation-delay: 2s; font-size: 18px; }
+    .floating-heart:nth-child(3) { left: 25%; animation-delay: 4s; font-size: 22px; }
+    .floating-heart:nth-child(4) { left: 35%; animation-delay: 1s; font-size: 20px; }
+    .floating-heart:nth-child(5) { left: 45%; animation-delay: 5s; font-size: 26px; }
+    .floating-heart:nth-child(6) { left: 55%; animation-delay: 3s; font-size: 19px; }
+    .floating-heart:nth-child(7) { left: 65%; animation-delay: 6s; font-size: 23px; }
+    .floating-heart:nth-child(8) { left: 75%; animation-delay: 1.5s; font-size: 21px; }
+    .floating-heart:nth-child(9) { left: 85%; animation-delay: 4.5s; font-size: 25px; }
+    .floating-heart:nth-child(10) { left: 95%; animation-delay: 2.5s; font-size: 20px; }
+    .floating-heart:nth-child(11) { left: 10%; animation-delay: 7s; font-size: 22px; }
+    .floating-heart:nth-child(12) { left: 30%; animation-delay: 3.5s; font-size: 24px; }
+    .floating-heart:nth-child(13) { left: 50%; animation-delay: 6.5s; font-size: 19px; }
+    .floating-heart:nth-child(14) { left: 70%; animation-delay: 5.5s; font-size: 23px; }
+    .floating-heart:nth-child(15) { left: 90%; animation-delay: 7.5s; font-size: 21px; }
+
+    .card-container {
+      width: 100%;
+      max-width: 400px;
+      background: linear-gradient(135deg, rgba(255, 23, 68, 0.15), rgba(255, 105, 180, 0.15));
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 23, 68, 0.5);
+      border-radius: 24px;
+      padding: 40px 32px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 
+        0 0 30px rgba(255, 23, 68, 0.4),
+        0 0 60px rgba(255, 23, 68, 0.2),
+        inset 0 0 60px rgba(255, 105, 180, 0.1);
+      position: relative;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .card-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 5px 40px rgba(255, 23, 68, 0.5),
+        0 0 80px rgba(255, 23, 68, 0.3),
+        inset 0 0 60px rgba(255, 105, 180, 0.15);
+    }
+
+    .card-container:active {
+      transform: scale(0.98);
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 8px 16px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .title {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #ff69b4, #ff1744);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+      margin: 24px 0;
+    }
+
+    .hearts {
+      font-size: 28px;
+      opacity: 0.9;
+      margin-bottom: 16px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .description {
+      opacity: 0.9;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .cta-text {
+      font-size: 13px;
+      opacity: 0.6;
+      font-weight: 500;
+    }
+
+    /* Sparkle effect */
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkle 2s infinite;
+    }
+
+    .sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 1s; }
+    .sparkle:nth-child(4) { bottom: 25%; right: 10%; animation-delay: 1.5s; }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      .card-container {
+        padding: 32px 24px;
+      }
+
+      .title {
+        font-size: 28px;
+      }
+
+      .hearts {
+        font-size: 24px;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+  <!-- Floating hearts background -->
+  <div class="hearts-background">
+    <div class="floating-heart">💕</div>
+    <div class="floating-heart">💖</div>
+    <div class="floating-heart">💝</div>
+    <div class="floating-heart">💗</div>
+    <div class="floating-heart">💕</div>
+    <div class="floating-heart">💖</div>
+    <div class="floating-heart">💝</div>
+    <div class="floating-heart">💗</div>
+    <div class="floating-heart">💕</div>
+    <div class="floating-heart">💖</div>
+    <div class="floating-heart">💝</div>
+    <div class="floating-heart">💗</div>
+    <div class="floating-heart">💕</div>
+    <div class="floating-heart">💖</div>
+    <div class="floating-heart">💝</div>
+  </div>
+
+  <div class="card-container" id="valentineCard" onclick="handleCardClick()">
+    <span class="sparkle"></span>
+    <span class="sparkle"></span>
+    <span class="sparkle"></span>
+    <span class="sparkle"></span>
     
-    <p><a href="pages/about.html">Go to About Page</a></p>
+    <div class="tag">For You</div>
+    <h1 class="title">Happy Valentine's Day, Anju 💖</h1>
+    <hr class="divider" />
+    <div class="hearts">💕 💖 💕</div>
+    <p class="description">I created something special to show you how much you mean to me. Tap to discover all the reasons why you're extraordinary.</p>
+    <p class="cta-text">Tap anywhere to continue →</p>
+  </div>
 
-    <img src="media/.jpg" alt="Anju">
-
-    <script src="js/script.js"></script>
-
-
-
-
-    <div class="video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="media/amazing.mp4" type="video/mp4">
-        </video>
-    </div>
-
+  <script>
+    function handleCardClick() {
+      const card = document.getElementById('valentineCard');
+      
+      // 1. HAPTIC FEEDBACK (Vibrate the phone)
+      // Check if the browser supports vibration
+      if (navigator.vibrate) {
+        navigator.vibrate(80); // Vibrate for 50ms (light tap feel)
+      }
+      
+      // 2. Visual Feedback before redirect
+      card.style.transform = 'scale(0.95)';
+      card.style.opacity = '0.8';
+      
+      // 3. Small delay to let the animation/vibration happen before page load
+      setTimeout(() => {
+        window.location.href = 'special.html';
+      }, 300);
+    }
+  </script>
 </body>
 </html>

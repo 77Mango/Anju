@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yay! She said YES! 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            z-index: 10;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5rem;
+            color: #ff4757;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #2f3542;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #57606f;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            background: #fff0f6;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .emoji-big {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #ff4757;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .btn:hover { transform: scale(1.05); }
+
+        /* Animations */
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Confetti Elements */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <span class="emoji-big">💖</span>
+        <h1>Yay!</h1>
+        <div class="subtitle">You said YES!</div>
+        
+        <div class="message">
+            I am the luckiest person in the world right now. 
+            I promise to make every day special for us. 
+            Happy Valentine's Day, Anju! 🌹
+        </div>
+
+    </div>
+
+    <script>
+        function createConfetti() {
+            const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#ff6b81'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Random properties
+                const bg = colors[Math.floor(Math.random() * colors.length)];
+                const left = Math.random() * 100; // 0 to 100vw
+                const animDuration = Math.random() * 3 + 2; // 2 to 5 seconds
+                const size = Math.random() * 10 + 5;
+                
+                confetti.style.backgroundColor = bg;
+                confetti.style.left = left + 'vw';
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                confetti.style.animation = `fall ${animDuration}s linear forwards`;
+                
+                // Random shape
+                if(Math.random() > 0.5) confetti.style.borderRadius = '50%';
+
+                document.body.appendChild(confetti);
+
+                // Remove from DOM after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, animDuration * 1000);
+            }
+        }
+
+        // Add the falling animation style dynamically
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes fall {
+                to {
+                    transform: translateY(105vh) rotate(720deg);
+                }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        // Run on load
+        window.onload = createConfetti;
+    </script>
+</body>
+</html>
